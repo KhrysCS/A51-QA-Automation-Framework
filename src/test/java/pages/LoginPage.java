@@ -20,6 +20,7 @@ public class LoginPage extends BasePage {
 
     //Methods
     public LoginPage clickSubmitBtn(){
+
         submitButtonLocator.click();
         //click(submitButtonLocator);
         return this;

@@ -1,6 +1,3 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -13,24 +10,25 @@ public class LoginTests extends BaseTest {
 
     //region Tests
     @Test//This method uses POM (Page Object Model) design pattern
-    public void loginValidEmailPasswordTest(){
+    public void loginValidEmailPasswordTest() throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
-        loginPage.provideEmail("demo@class.com").providePassword("te$t$tudent").clickSubmitBtn();
+       // loginPage.provideEmail("demo@class.com").providePassword("te$t$tudent").clickSubmitBtn();
         //Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-        Assert.assertTrue(homePage.getUserAvatar());
+       // Assert.assertTrue(homePage.getUserAvatar());
 
 
-/*      LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+     //LoginPage loginPage = new LoginPage(driver);
+      //  HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail("demo@class.com");
         loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmit();
+        Thread.sleep(3000);
+        loginPage.clickSubmitBtn();
 
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());*/
+        Assert.assertTrue(homePage.getUserAvatar());
 
     }
     @Test
@@ -55,10 +53,10 @@ public class LoginTests extends BaseTest {
     public void loginEmptyEmailPassword() {
 
 //      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
+/*        ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver(options);
+        WebDriver driver = new ChromeDriver(options);*/
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://qa.koel.app/";
